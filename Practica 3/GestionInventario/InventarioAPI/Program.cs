@@ -2,10 +2,15 @@ using InventarioAPI.Servicios;
 
 var builder = WebApplication.CreateBuilder(args);
 
+builder.Services.AddControllers().AddJsonOptions(options =>
+{
+        options.JsonSerializerOptions.PropertyNamingPolicy =null;
+});
+
 builder.Services.AddControllers();
 builder.Services.AddSingleton<ServicioArchivoJson>();
 builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen(); 
+builder.Services.AddSwaggerGen();
 
 var app=builder.Build();
 

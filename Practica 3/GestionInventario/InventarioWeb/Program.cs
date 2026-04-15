@@ -3,6 +3,11 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 builder.Services.AddRazorPages();
 
+builder.Services.AddHttpClient("InventarioAPI", cliente =>
+{
+    cliente.BaseAddress = new Uri("https://localhost:7178");
+});
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

@@ -1,10 +1,51 @@
 ﻿@page
 @model IndexModel
 @{
-    ViewData["Title"] = "Home page";
+    ViewData["Title"] = "Lista de Productos";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-</div>
+<h1>Inventario del Supermercado</h1>
+
+<p>
+    <a asp-page="CrearProducto" class="btn btn-primary">Crear Nuevo Producto</a>
+</p>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Nombre</th>
+            <th>Categoría</th>
+            <th>Precio</th>
+            <th>Stock</th>
+            <th>Vencimiento</th>
+            <th>Acciones</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (Producto producto in Model.ListaProductos)
+        {
+            <tr>
+                <td>@producto.Id</td>
+                <td>@producto.Nombre</td>
+                <td>@producto.Categoria</td>
+                <td>@producto.Precio.ToString("C")</td>
+                <td>@producto.CantidadStock</td>
+                <td>
+                    @if (producto.FechaVencimiento.HasValue)
+                    {
+                        @producto.FechaVencimiento.Value.ToString("dd/MM/yyyy")
+                    }
+                    else
+                    {
+                        <span>N/A</span>
+                    }
+                </td>
+                <td>
+                    <a asp-page="Editar" asp-route-id="@producto.Id" class="btn btn-sm btn-warning">Editar</a>
+                    <a asp-page="Eliminar" asp-route-id="@producto.Id" class="btn btn-sm btn-danger">Eliminar</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

@@ -1,0 +1,51 @@
+﻿@page
+@model CrearModel
+@{
+    ViewData["Title"] ="Crear Producto";
+}
+
+<h1>Crear Nuevo Producto</h1>
+
+<form method="post">
+    <!-- Resumen de errores de validación (si los hay) -->
+    <div asp-validation-summary="All" class="text-danger"></div>
+
+    <div class="form-group mb-3">
+        <label asp-for="ProductoNuevo.Nombre">Nombre</label>
+        <input asp-for="ProductoNuevo.Nombre" class="form-control" />
+        <span asp-validation-for="ProductoNuevo.Nombre" class="text-danger"></span>
+    </div>
+
+    <div class="form-group mb-3">
+        <label asp-for="ProductoNuevo.Categoria">Categoría</label>
+        <input asp-for="ProductoNuevo.Categoria" class="form-control" />
+    </div>
+
+    <div class="form-group mb-3">
+        <label asp-for="ProductoNuevo.Descripcion">Descripción</label>
+        <textarea asp-for="ProductoNuevo.Descripcion" class="form-control" rows="3"></textarea>
+    </div>
+
+    <div class="form-group mb-3">
+        <label asp-for="ProductoNuevo.Precio">Precio</label>
+        <input asp-for="ProductoNuevo.Precio" class="form-control" type="number" step="0.01" />
+        <span asp-validation-for="ProductoNuevo.Precio" class="text-danger"></span>
+    </div>
+
+    <div class="form-group mb-3">
+        <label asp-for="ProductoNuevo.CantidadStock">Cantidad en Stock</label>
+        <input asp-for="ProductoNuevo.CantidadStock" class="form-control" type="number" />
+    </div>
+
+    <div class="form-group mb-3">
+        <label asp-for="ProductoNuevo.FechaVencimiento">Fecha de Vencimiento (opcional)</label>
+        <input asp-for="ProductoNuevo.FechaVencimiento" class="form-control" type="date" />
+    </div>
+
+    <button type="submit" class="btn btn-success">Guardar Producto</button>
+    <a asp-page="Index" class="btn btn-secondary">Cancelar</a>
+</form>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

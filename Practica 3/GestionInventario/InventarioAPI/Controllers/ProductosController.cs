@@ -8,11 +8,11 @@ namespace InventarioAPI.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class ControladorProductos : ControllerBase
+    public class ProductosController : ControllerBase
     {
         private readonly ServicioArchivoJson _servicioArchivo;
 
-        public ControladorProductos(ServicioArchivoJson servicioArchivo)
+        public ProductosController(ServicioArchivoJson servicioArchivo)
         {
             _servicioArchivo =servicioArchivo;
         }
