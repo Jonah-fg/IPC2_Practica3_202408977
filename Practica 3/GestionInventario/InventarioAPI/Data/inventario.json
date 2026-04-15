@@ -1,0 +1,11 @@
+[
+  {
+    "Id": 1,
+    "Nombre": "Leche Deslactosada",
+    "Categoria": "L\u00E1cteos",
+    "Descripcion": "Leche sin lactosa 1 litro",
+    "Precio": 2.10,
+    "CantidadStock": 30,
+    "FechaVencimiento": "2026-06-01T00:00:00"
+  }
+]
