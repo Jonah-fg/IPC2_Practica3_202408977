@@ -84,7 +84,7 @@ namespace InventarioAPI.Controllers
         [HttpDelete("{id}")]
         public IActionResult Eliminar(int id)
         {
-            List<Producto> listaProductos=_servicioArchivo.LeerProductos();
+            List<Producto> listaProductos = _servicioArchivo.LeerProductos();
             Producto? productoAEliminar=listaProductos.FirstOrDefault(p => p.Id == id);
 
             if (productoAEliminar ==null)

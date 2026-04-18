@@ -1,0 +1,51 @@
+﻿@page "{id:int}"
+@model EditarModel
+@{
+    ViewData["Title"] = "Editar Producto";
+}
+
+<h1>Editar Producto</h1>
+
+<form method="post">
+    <div asp-validation-summary="All" class="text-danger"></div>
+
+    <input type="hidden" asp-for="ProductoActualizar.Id" />
+
+    <div class="form-group mb-3">
+        <label asp-for="ProductoActualizar.Nombre">Nombre</label>
+        <input asp-for="ProductoActualizar.Nombre" class="form-control" />
+        <span asp-validation-for="ProductoActualizar.Nombre" class="text-danger"></span>
+    </div>
+
+    <div class="form-group mb-3">
+        <label asp-for="ProductoActualizar.Categoria">Categoría</label>
+        <input asp-for="ProductoActualizar.Categoria" class="form-control" />
+    </div>
+
+    <div class="form-group mb-3">
+        <label asp-for="ProductoActualizar.Descripcion">Descripción</label>
+        <textarea asp-for="ProductoActualizar.Descripcion" class="form-control" rows="3"></textarea>
+    </div>
+
+    <div class="form-group mb-3">
+        <label asp-for="ProductoActualizar.Precio">Precio</label>
+        <input asp-for="ProductoActualizar.Precio" class="form-control" type="number" step="0.01" />
+        <span asp-validation-for="ProductoActualizar.Precio" class="text-danger"></span>
+    </div>
+
+    <div class="form-group mb-3">
+        <label asp-for="ProductoActualizar.CantidadStock">Cantidad en Stock</label>
+        <input asp-for="ProductoActualizar.CantidadStock" class="form-control" type="number" />
+    </div>
+
+    <div class="form-group mb-3">
+        <label asp-for="ProductoActualizar.FechaVencimiento">Fecha de Vencimiento (opcional)</label>
+        <input asp-for="ProductoActualizar.FechaVencimiento" class="form-control" type="date" />
+    </div>
+    <button type="submit" class="btn btn-primary">Guardar Cambios</button>
+    <a asp-page="Index" class="btn btn-secondary">Cancelar</a>
+</form>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

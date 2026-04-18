@@ -19,7 +19,7 @@ namespace InventarioAPI.Servicios
 
             if (!File.Exists(_rutaArchivo))
             {
-                File.WriteAllText(_rutaArchivo, "[]");
+                File.WriteAllText(_rutaArchivo,"[]");
             }
         }
 

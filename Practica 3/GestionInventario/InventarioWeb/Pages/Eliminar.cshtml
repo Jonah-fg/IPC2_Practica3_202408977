@@ -1,0 +1,51 @@
+﻿@page "{id:int}"
+@model EliminarModel
+@{
+    ViewData["Title"] = "Eliminar Producto";
+}
+
+<h1 class="text-danger">Eliminar Producto</h1>
+
+<div class="alert alert-warning">
+    <h4>¿Está seguro que desea eliminar este producto?</h4>
+    <p>Esta acción no se puede deshacer.</p>
+</div>
+
+<div>
+    <hr/>
+    <dl class="row">
+        <dt class="col-sm-2">Nombre:</dt>
+        <dd class="col-sm-10">@Model.ProductoEliminar.Nombre</dd>
+
+        <dt class="col-sm-2">Categoría:</dt>
+        <dd class="col-sm-10">@Model.ProductoEliminar.Categoria</dd>
+
+        <dt class="col-sm-2">Descripción:</dt>
+        <dd class="col-sm-10">@Model.ProductoEliminar.Descripcion</dd>
+
+        <dt class="col-sm-2">Precio:</dt>
+        <dd class="col-sm-10">@Model.ProductoEliminar.Precio.ToString("C")</dd>
+
+        <dt class="col-sm-2">Stock:</dt>
+        <dd class="col-sm-10">@Model.ProductoEliminar.CantidadStock</dd>
+
+        <dt class="col-sm-2">Vencimiento:</dt>
+        <dd class="col-sm-10">
+            @(Model.ProductoEliminar.FechaVencimiento?.ToString("dd/MM/yyyy") ?? "N/A")
+        </dd>
+    </dl>
+</div>
+<form method="post">
+    <button type="submit" class="btn btn-danger">Eliminar definitivamente</button>
+    <a asp-page="Index" class="btn btn-secondary">Cancelar</a>
+</form>
+
+@if (!ModelState.IsValid)
+{
+    <div class="alert alert-danger mt-3">
+        @foreach (var error in ModelState.Values.SelectMany(v =>v.Errors))
+        {
+            <p>@error.ErrorMessage</p>
+        }
+    </div>
+}
